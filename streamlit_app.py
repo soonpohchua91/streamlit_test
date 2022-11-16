@@ -51,22 +51,22 @@ if submit:
    emotion = max(result,key=lambda x:x["score"])["label"]
    if emotion not in ['neutral', 'joy', 'surprise']:
         st.success(f'2. Your post may lead to the following emotion in others: {emotion}.')
-       user_input1 = lower_demoji(user_input)
-    user_input1 = nfx.remove_puncts(user_input1)
-    user_input1 = nfx.remove_html_tags(user_input1)
-    user_input1 = nfx.remove_special_characters(user_input1)
-    user_input1 = stemming(user_input1)
-    user_input1 = nfx.remove_stopwords(user_input1)
-    user_input1 = token.texts_to_sequences(user_input1)
-    user_input1 = sequence.pad_sequences(user_input1, maxlen=256)
-    result = model.predict(user_input1)
-    result[(result < 0.5)] = 0
-    result[(result >= 0.5)] = 1
-    result = pd.DataFrame(result, columns = ['disrespect', 'insult', 'offensive', 'inferiority', 'humiliation', 'hate_speech', 'dehumanizing'])
-    attributes = []
-    for possible_attribute in result:
-        if result[possible_attribute][0]: attributes.append(possible_attribute)
-    if attributes: st.success(f'1. {attributes}')
+        user_input1 = lower_demoji(user_input)
+        user_input1 = nfx.remove_puncts(user_input1)
+        user_input1 = nfx.remove_html_tags(user_input1)
+        user_input1 = nfx.remove_special_characters(user_input1)
+        user_input1 = stemming(user_input1)
+        user_input1 = nfx.remove_stopwords(user_input1)
+        user_input1 = token.texts_to_sequences(user_input1)
+        user_input1 = sequence.pad_sequences(user_input1, maxlen=256)
+        result = model.predict(user_input1)
+        result[(result < 0.5)] = 0
+        result[(result >= 0.5)] = 1
+        result = pd.DataFrame(result, columns = ['disrespect', 'insult', 'offensive', 'inferiority', 'humiliation', 'hate_speech', 'dehumanizing'])
+        attributes = []
+        for possible_attribute in result:
+            if result[possible_attribute][0]: attributes.append(possible_attribute)
+        if attributes: st.success(f'1. {attributes}')
     # else: st.success(f'1. Great! Your post seems fine!')
     else: st.success(f'1. Your post does not invoke negative emotion in others.)
 
