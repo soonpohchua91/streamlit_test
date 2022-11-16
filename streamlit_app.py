@@ -1,19 +1,16 @@
-import streamlit as st
-import pandas as pd
-import streamlit as st
-from transformers import pipeline
-import pickle
-from sklearn.naive_bayes import MultinomialNB
-from skmultilearn.problem_transform import ClassifierChain
-import nltk
 import demoji
-import neattext.functions as nfx
-from nltk.stem.porter import PorterStemmer
-from sklearn.feature_extraction.text import TfidfVectorizer
 import json
+import neattext.functions as nfx
+import nltk
+from nltk.stem.porter import PorterStemmer
+import pandas as pd
+import pickle
 import re
+from sklearn.feature_extraction.text import TfidfVectorizer
+import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import sequence
+from transformers import pipeline
 
 # Functions
 
@@ -78,9 +75,8 @@ if submit:
   count = 0
   for i in hatewords: 
     if re.match('(^|(.* ))'+i.lower()+'(( .*)|$)',user_input.lower()):
-      st.success(f'3. The following word(s) {i} is potentially {hatewords.get(i).lower()}.')
+      st.success(f'3. The following word(s) {i} in your post is potentially {hatewords.get(i).lower()}.')
       st.success(f'Please refer to this link for more information: https://hatebase.org/vocabulary/{i.lower().replace(" ", "-")}')
       count =+ 1
   
   if count == 0: st.success(f'3. There is no hate words detected in your post.')
-     
