@@ -11,6 +11,7 @@ import neattext.functions as nfx
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 import json
+import re
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import sequence
 
@@ -74,9 +75,10 @@ if submit:
 if submit: 
   count = 0
   for i in hatewords: 
-    if i.lower() in user_input.lower():
+    if re.match('^|(.* )'+i.lower()+'( .*)|$',user_input.lower()):
       st.success(f'3. The following word(s) {i} is potentially {hatewords.get(i).lower()}.')
       st.success(f'Please refer to this link for more information: https://hatebase.org/vocabulary/{i.lower().replace(" ", "-")}')
       count =+ 1
   
   if count == 0: st.success(f'3. There is no hate words detected in your post.')
+     
