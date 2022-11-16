@@ -67,7 +67,7 @@ if submit:
         attributes = []
         for possible_attribute in result:
             if result[possible_attribute][0]: attributes.append(possible_attribute)
-        if attributes: st.success(f'2. Your post has the following negative labels: {", ".join(attributes)}')
+        if attributes: st.success(f'2. Your post has the following negative labels: {", ".join(attributes)}.')
         else: st.success(f'2. Your post does not have any negative labels.')
    else: 
         st.success(f'1. Your post does not invoke negative emotion in others.')
