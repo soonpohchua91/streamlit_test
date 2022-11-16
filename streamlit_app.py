@@ -68,7 +68,7 @@ if submit:
             if result[possible_attribute][0]: attributes.append(possible_attribute)
         if attributes: st.success(f'1. {attributes}')
     # else: st.success(f'1. Great! Your post seems fine!')
-    else: st.success(f'1. Your post does not invoke negative emotion in others.)
+    else: st.success(f'1. Your post does not invoke negative emotion in others.')
 
                 
 if submit: 
