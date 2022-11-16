@@ -30,7 +30,7 @@ def stemming(x):
 
 st.title("Project Elimi-'Hate' Demo")
 st.write('Thank you for visiting this API. Write your post below and it can check if:')
-st.write('1. Your post can potentially be disrespectful, insulting, offensive, arrogant, humiliating, hateful and dehumanizing towards others;')
+st.write('1. Your post can potentially be disrespectful, insulting, offensive, discriminating, humiliating, hateful and dehumanizing towards others;')
 st.write('2. The emotion that your post may cause in others; and')
 st.write('3. Your post contains any hate word(s) from https://hatebase.org.')
 
@@ -43,7 +43,15 @@ user_input = form.text_area('Enter your post here:')
 submit = form.form_submit_button('Submit')
 
 if submit:
-    user_input1 = lower_demoji(user_input)
+   classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=True)  
+   user_input2 = lower_demoji(user_input)
+   result = classifier(user_input2)[0]
+   label = result[0]['label']
+   score = result[1]['score']
+   emotion = max(result,key=lambda x:x["score"])["label"]
+   if emotion not in ['neutral', 'joy', 'surprise']:
+        st.success(f'2. Your post may lead to the following emotion in others: {emotion}.')
+       user_input1 = lower_demoji(user_input)
     user_input1 = nfx.remove_puncts(user_input1)
     user_input1 = nfx.remove_html_tags(user_input1)
     user_input1 = nfx.remove_special_characters(user_input1)
@@ -59,16 +67,10 @@ if submit:
     for possible_attribute in result:
         if result[possible_attribute][0]: attributes.append(possible_attribute)
     if attributes: st.success(f'1. {attributes}')
-    else: st.success(f'1. Great! Your post seems fine!')
-    
-if submit:
-   classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=True)  
-   user_input2 = lower_demoji(user_input)
-   result = classifier(user_input2)[0]
-   label = result[0]['label']
-   score = result[1]['score']
-   st.success(f'2. Your post may lead to the following emotion in others: {max(result,key=lambda x:x["score"])["label"]}.')
-            
+    # else: st.success(f'1. Great! Your post seems fine!')
+    else: st.success(f'1. Your post does not invoke negative emotion in others.)
+
+                
 if submit: 
   count = 0
   for i in hatewords: 
