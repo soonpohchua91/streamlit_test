@@ -31,8 +31,8 @@ def stemming(x):
 
 st.title("Project Elimi-'Hate' Demo")
 st.write('Thank you for visiting this API. Write your post below and it can check if:')
-st.write('1. The negative emotion that your post may have; and')
-st.write('2. Your post can potentially be disrespectful, insulting, offensive, discriminating, humiliating, hateful or dehumanizing;')
+st.write('1. The negative emotion that your post may contain; and')
+st.write('2. Your post is potentially disrespectful, insulting, offensive, discriminating, humiliating, hateful or dehumanizing towards others;')
 st.write('3. Your post contains any hate word(s) from https://hatebase.org.')
 
 model = load_model('my_model.h5')
@@ -51,7 +51,7 @@ if submit:
    score = result[1]['score']
    emotion = max(result,key=lambda x:x["score"])["label"]
    if emotion not in ['neutral', 'joy', 'surprise']:
-        st.success(f'1. Your post may lead to the following emotion in others: {emotion}.')
+        st.success(f'1. Your post may contain the following negative emotion: {emotion}.')
         user_input1 = lower_demoji(user_input)
         user_input1 = nfx.remove_puncts(user_input1)
         user_input1 = nfx.remove_html_tags(user_input1)
@@ -71,7 +71,7 @@ if submit:
         else: st.success(f'2. Your post does not have any negative labels.')
    else: 
         st.success(f'1. Your post does not invoke negative emotion in others.')
-        st.success(f'2. Your post does not have any negative labels.')
+        st.success(f'2. Your post does not contain any negative labels.')
 
                 
 if submit: 
