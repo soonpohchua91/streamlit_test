@@ -51,7 +51,7 @@ if submit:
    score = result[1]['score']
    emotion = max(result,key=lambda x:x["score"])["label"]
    if emotion not in ['neutral', 'joy', 'surprise']:
-        st.success(f'2. Your post may lead to the following emotion in others: {emotion}.')
+        st.success(f'1. Your post may lead to the following emotion in others: {emotion}.')
         user_input1 = lower_demoji(user_input)
         user_input1 = nfx.remove_puncts(user_input1)
         user_input1 = nfx.remove_html_tags(user_input1)
@@ -67,9 +67,11 @@ if submit:
         attributes = []
         for possible_attribute in result:
             if result[possible_attribute][0]: attributes.append(possible_attribute)
-        if attributes: st.success(f'1. {attributes}')
-   # else: st.success(f'1. Great! Your post seems fine!')
-   else: st.success(f'1. Your post does not invoke negative emotion in others.')
+        if attributes: st.success(f'2. Your post has the following negative labels: {attributes}')
+        else: st.success(f'2. Your post does not have any negative labels.')
+   else: 
+        st.success(f'1. Your post does not invoke negative emotion in others.')
+        st.success(f'2. Your post does not have any negative labels.')
 
                 
 if submit: 
