@@ -75,7 +75,7 @@ if submit:
 if submit: 
   count = 0
   for i in hatewords: 
-    if re.match('^|(.* )'+i.lower()+'( .*)|$',user_input.lower()):
+    if re.match('(^|(.* ))'+i.lower()+'(( .*)|$)',user_input.lower()):
       st.success(f'3. The following word(s) {i} is potentially {hatewords.get(i).lower()}.')
       st.success(f'Please refer to this link for more information: https://hatebase.org/vocabulary/{i.lower().replace(" ", "-")}')
       count =+ 1
