@@ -1,0 +1,8 @@
+streamlit
+transformers
+tensorflow
+scikit-multilearn
+scikit-learn
+demoji
+nltk
+neattext
