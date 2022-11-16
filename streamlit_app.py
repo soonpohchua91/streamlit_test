@@ -30,7 +30,7 @@ st.title("Project Elimi-'Hate' Demo")
 st.write('Thank you for visiting this API. Write your post below and it can check if:')
 st.write('1. The negative emotion that your post may contain;')
 st.write('2. Your post is potentially disrespectful, insulting, offensive, discriminating, humiliating, hateful or dehumanizing towards others; and')
-st.write('3. Your post contains any hate word(s) from https://hatebase.org.')
+st.write('3. Your post contains any hate words from https://hatebase.org.')
 
 model = load_model('rnn_model.h5')
 token = pickle.load(open('rnn_token','rb'))
