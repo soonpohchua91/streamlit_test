@@ -1,7 +1,6 @@
 streamlit
 transformers
 tensorflow
-scikit-learn
 demoji
 nltk
 neattext
