@@ -31,8 +31,8 @@ def stemming(x):
 
 st.title("Project Elimi-'Hate' Demo")
 st.write('Thank you for visiting this API. Write your post below and it can check if:')
-st.write('1. Your post can potentially be disrespectful, insulting, offensive, discriminating, humiliating, hateful and dehumanizing towards others;')
-st.write('2. The emotion that your post may cause in others; and')
+st.write('1. The negative emotion that your post may have; and')
+st.write('2. Your post can potentially be disrespectful, insulting, offensive, discriminating, humiliating, hateful or dehumanizing;')
 st.write('3. Your post contains any hate word(s) from https://hatebase.org.')
 
 model = load_model('my_model.h5')
