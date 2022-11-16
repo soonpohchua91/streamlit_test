@@ -70,7 +70,7 @@ if submit:
         if attributes: st.success(f'2. Your post has the following negative labels: {", ".join(attributes)}.')
         else: st.success(f'2. Your post does not have any negative labels.')
    else: 
-        st.success(f'1. Your post does not invoke negative emotion in others.')
+        st.success(f'1. Your post does not contain negative emotion.')
         st.success(f'2. Your post does not contain any negative labels.')
 
                 
