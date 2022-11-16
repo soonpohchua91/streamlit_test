@@ -32,7 +32,7 @@ def stemming(x):
 st.title("Project Elimi-'Hate' Demo")
 st.write('Thank you for visiting this API. Write your post below and it can check if:')
 st.write('1. The negative emotion that your post may contain;')
-st.write('2. Your post is potentially disrespectful, insulting, offensive, discriminating, humiliating, hateful or dehumanizing towards others;and')
+st.write('2. Your post is potentially disrespectful, insulting, offensive, discriminating, humiliating, hateful or dehumanizing towards others; and')
 st.write('3. Your post contains any hate word(s) from https://hatebase.org.')
 
 model = load_model('rnn_model.h5')
@@ -67,7 +67,7 @@ if submit:
         attributes = []
         for possible_attribute in result:
             if result[possible_attribute][0]: attributes.append(possible_attribute)
-        if attributes: st.success(f'2. Your post has the following negative labels: {", ".join(attributes)}.')
+        if attributes: st.success(f'2. Your post has the following negative label(s): {", ".join(attributes)}.')
         else: st.success(f'2. Your post does not have any negative labels.')
    else: 
         st.success(f'1. Your post does not contain negative emotion.')
