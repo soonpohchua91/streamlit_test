@@ -35,9 +35,9 @@ st.write('1. The negative emotion that your post may contain;')
 st.write('2. Your post is potentially disrespectful, insulting, offensive, discriminating, humiliating, hateful or dehumanizing towards others;and')
 st.write('3. Your post contains any hate word(s) from https://hatebase.org.')
 
-model = load_model('my_model.h5')
-token = pickle.load(open('token','rb'))
-hatewords = json.loads(open('convert.txt','r').read())
+model = load_model('rnn_model.h5')
+token = pickle.load(open('rnn_token','rb'))
+hatewords = json.loads(open('hatewords.txt','r').read())
 
 form = st.form(key='sentiment-form')
 user_input = form.text_area('Enter your post here:')
