@@ -6,7 +6,6 @@ from nltk.stem.porter import PorterStemmer
 import pandas as pd
 import pickle
 import re
-from sklearn.feature_extraction.text import TfidfVectorizer
 import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import sequence
