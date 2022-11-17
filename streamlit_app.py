@@ -59,7 +59,7 @@ if submit:
         result = model.predict(user_input1)
         result[(result < 0.5)] = 0
         result[(result >= 0.5)] = 1
-        result = pd.DataFrame(result, columns = ['disrespect', 'insult', 'offensive', 'inferiority', 'humiliation', 'hate_speech', 'dehumanizing'])
+        result = pd.DataFrame(result, columns = ['disrespectful', 'insulting', 'humiliating', 'discriminating', 'dehumanizing', 'violence', 'genocide', 'offensive', 'hateful'])
         attributes = []
         for possible_attribute in result:
             if result[possible_attribute][0]: attributes.append(possible_attribute)
