@@ -32,7 +32,7 @@ st.write('2. Your post is potentially disrespectful, insulting, offensive, discr
 st.write('3. Your post contains any hate words from https://hatebase.org.')
 
 model = load_model('rnn_model.h5')
-token = pickle.load(open('rnn_token','rb'))
+token = pickle.load(open('rnn_token.pkl','rb'))
 hatewords = json.loads(open('hatewords.txt','r').read())
 
 form = st.form(key='sentiment-form')
