@@ -1,6 +1,6 @@
 streamlit
 transformers 
-tensorflow v2.9
+tensorflow==2.9
 demoji
 nltk
 neattext
