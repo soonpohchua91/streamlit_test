@@ -4,4 +4,3 @@ tensorflow
 demoji
 nltk
 neattext
-scikit-learn
